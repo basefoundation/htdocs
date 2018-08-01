@@ -1,0 +1,6 @@
+RewriteBase /tutorial/findFriends
+RewriteEngine On
+RewriteRule ^([a-zA-Z0-9_-]+)$ profile.php?u=$1
+RewriteRule ^([a-zA-Z0-9_-]+)/$ profile.php?u=$1
+RewriteRule ^([a-zA-Z0-9_-]+)/albums/$ view_albums.php?u=$1
+RewriteRule ^([a-zA-Z0-9_-]+)/albums/$ view_photo.php?u=$1

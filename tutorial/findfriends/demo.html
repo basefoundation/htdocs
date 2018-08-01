@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <style>
+            h1 {
+                color:#800080;
+                text-align:center;
+                font-style:cursive;
+            }
+            #discounttable{
+                float:right;
+                
+            }
+            body {
+                background-color:#E6E6FA;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>E-BOOK GRAND SALE</h1>
+        <form method="get">
+        <table>
+            <tr>
+                <td>Customer Name</td>
+                <td><input type="text" name="customerName" placeholder="Enter the Customer Name"/></td>
+            </tr>
+            <tr>
+                <td>Mobile Number</td>
+                <td><input type="text" pattern="(7|8|9)\d{9}" name="customerMobileNumber" placeholder="Enter the Mobile Number"/></td>
+            </tr>
+            <tr>
+                <td>Book Category</td>
+                <td><input type="radio" name="bookCategory" value="science"/>Science<input type="radio" name="bookType" value="Comics"/>Comics</td>
+            </tr>
+            <tr>
+                <td>Types</td>
+                <td><select name="bookTypes">
+                    <option value="Weekly">Weekly</option>
+                    <option value="Montly">Monthly</option>
+                    <option value="Fortnightly">Fortnightly</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td>No of Books Required</td>
+                <td><input id="bookval" name="bookCount" type="range" min="1" max="500" step="1" value="1"/></td>
+            </tr>
+            <tr>
+                <td>Your Favorites</td>
+                <td><input type="checkbox"/>Drama<input type="checkbox"/>Horror<input type="checkbox"/>Mystery<input type="checkbox"/>Romance</td>
+            </tr>
+            <tr>
+                <td><button>Calculate Total Price</button></td>
+                <td><button type="reset" value="reset">Reset</button></td>
+            </tr>
+            <tr><div>
+                <td>Total Price is:</td>
+            </div></tr>
+        </table>
+        <table id="discounttable" border="1">
+            <tr>
+            <th>Book Type</th>
+            <th>Per Book Cost</th>
+            <th>Discount Rate(in percentage)</th>
+            </tr>
+            <tr>
+                <th>Science</th>
+                <th>400</th>
+                <th>4% if total book count <=250</th>
+            </tr>
+            <tr>
+                <th>Science</th>
+                <th>400</th>
+                <th>4% if total book count <=250</th>
+            </tr>
+            <tr>
+                <th>Science</th>
+                <th>400</th>
+                <th>4% if total book count <=250</th>
+            </tr>
+            <tr>
+                <th>Science</th>
+                <th>400</th>
+                <th>4% if total book count <=250</th>
+            </tr>
+        </table>
+        </form>
+    </body>
+</html>
