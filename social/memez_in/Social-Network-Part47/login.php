@@ -1,32 +1,10 @@
 <?php
-include('classes/DB.php');
+include('header.php');
 
-if (isset($_POST['login'])) {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+?>
+<?php
+//session_start();
 
-        if (DB::query('SELECT username FROM users WHERE username=:username', array(':username'=>$username))) {
-
-                if (password_verify($password, DB::query('SELECT password FROM users WHERE username=:username', array(':username'=>$username))[0]['password'])) {
-                        echo 'Logged in!';
-                        $cstrong = True;
-                        $token = bin2hex(openssl_random_pseudo_bytes(64, $cstrong));
-                        $user_id = DB::query('SELECT id FROM users WHERE username=:username', array(':username'=>$username))[0]['id'];
-                        DB::query('INSERT INTO login_tokens VALUES (\'\', :token, :user_id)', array(':token'=>sha1($token), ':user_id'=>$user_id));
-
-                        setcookie("SNID", $token, time() + 60 * 60 * 24 * 7, '/', NULL, NULL, TRUE);
-                        setcookie("SNID_", '1', time() + 60 * 60 * 24 * 3, '/', NULL, NULL, TRUE);
-                        header("Location: index.php");
-
-                } else {
-                        echo 'Incorrect Password!';
-                }
-
-        } else {
-                echo 'User not registered!';
-        }
-
-}
 
 ?>
 
@@ -57,7 +35,7 @@ if (isset($_POST['login'])) {
             </div>
             <div class="form-group">
                <input type="submit" name="login" value="Login">
-            </div><a href="#" class="forgot">Forgot your email or password?</a></form>
+            </div><a href="forgot-password.php" class="forgot">Forgot your email or password?</a></form>
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>

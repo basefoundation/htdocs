@@ -1,6 +1,6 @@
+<?php include('header.php');?>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +28,7 @@
                 <div class="dropdown">
                     <button class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">ME <span class="caret"></span></button>
                     <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                        <li role="presentation"><a href="profile.php?username="."$username">My Profile</a></li>
+                        <li role="presentation"><a href="profile.php?username=<?php echo $_SESSION["username"] ?>">My Profile</a></li>
                         <li class="divider" role="presentation"></li>
                         <li role="presentation"><a href="index.php">Timeline </a></li>
                         <!--<li role="presentation"><a href="#">Messages </a></li>-->
@@ -51,7 +51,7 @@
                     <form class="navbar-form navbar-left">
                         <div class="searchbox"><i class="glyphicon glyphicon-search"></i>
                             <input class="form-control sbox" type="text">
-                            <ul class="list-group autocomplete" style="position:absolute;width:100%; z-index:100">
+                           <ul class="list-group autocomplete" style="position:absolute;width:100%; z-index:100">
                             </ul>
                         </div>
                     </form>
@@ -59,7 +59,7 @@
                         <li role="presentation"><a href="index.php">My Timeline</a></li>
                         <li class="dropdown open"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" href="#">User <span class="caret"></span></a>
                             <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                <li role="presentation"><a href="profile.php">My Profile</a></li>
+                                <li role="presentation"><a href="profile.php?username=<?php echo $_SESSION["username"] ?>">My Profile</a></li>
                                 <li class="divider" role="presentation"></li>
                                 <li role="presentation"><a href="index.php">Timeline </a></li>
                                 <!--<li role="presentation"><a href="#">Messages </a></li>-->
@@ -75,7 +75,7 @@
                         <li role="presentation"><a href="notify.php">Notifications</a></li>
                         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">User <span class="caret"></span></a>
                             <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                <li role="presentation"><a href="profile.php">My Profile</a></li>
+                                <li role="presentation"><a href="profile.php?username=<?php echo $_SESSION["username"]; ?>">My Profile</a></li>
                                 <li class="divider" role="presentation"></li>
                                 <li role="presentation"><a href="index.php">Timeline </a></li>
                                 <!--<li role="presentation"><a href="#">Messages </a></li>-->
@@ -90,7 +90,7 @@
         </nav>
     </div>
     <div class="container">
-        <h1>Timeline </h1>
+        <h1>Timeline<?php  echo "UserName is " . $_SESSION["username"] .'<br/>'; ?> </h1>
         <div class="timelineposts">
 
         </div>
@@ -162,10 +162,11 @@
                                 //print(r)
                                 //console.log(r)
                                  var posts = JSON.parse(r)
+                                  
                                 $.each(posts, function(index) {
                                       //console.log(posts[index])
-                                       if (posts[index].PostImage == "") {
 
+                                       if (posts[index].PostImage == "") {
                                                 $('.timelineposts').html(
                                                         $('.timelineposts').html() +
 
@@ -230,6 +231,8 @@
                                        })
 
                                 scrollToAnchor(location.hash)
+                               
+                                
                                  
                         },
                         error: function(r) {

@@ -107,15 +107,15 @@ if (isset($_GET['username'])) {
                     <input class="form-control" type="text">
                 </div>
                 <div class="dropdown">
-                    <button class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">MENU <span class="caret"></span></button>
+                    <button class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">ME<span class="caret"></span></button>
                     <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                        <li role="presentation"><a href="#">My Profile</a></li>
+                        <li role="presentation"><a href="profile.php">My Profile</a></li>
                         <li class="divider" role="presentation"></li>
-                        <li role="presentation"><a href="#">Timeline </a></li>
-                        <li role="presentation"><a href="#">Messages </a></li>
-                        <li role="presentation"><a href="#">Notifications </a></li>
-                        <li role="presentation"><a href="#">My Account</a></li>
-                        <li role="presentation"><a href="#">Logout </a></li>
+                        <li role="presentation"><a href="index.php">Timeline </a></li>
+                        <!---<li role="presentation"><a href="#">Messages </a></li>-->
+                        <li role="presentation"><a href="notify.php">Notifications </a></li>
+                        <li role="presentation"><a href="my-account.php">My Account</a></li>
+                        <li role="presentation"><a href="logout.php">Logout </a></li>
                     </ul>
                 </div>
             </form>
@@ -135,32 +135,32 @@ if (isset($_GET['username'])) {
                         </div>
                     </form>
                     <ul class="nav navbar-nav hidden-md hidden-lg navbar-right">
-                        <li role="presentation"><a href="#">My Timeline</a></li>
+                        <li role="presentation"><a href="index.php">My Timeline</a></li>
                         <li class="dropdown open"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" href="#">User <span class="caret"></span></a>
                             <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                <li role="presentation"><a href="#">My Profile</a></li>
+                                <li role="presentation"><a href="profile.php">My Profile</a></li>
                                 <li class="divider" role="presentation"></li>
-                                <li role="presentation"><a href="#">Timeline </a></li>
-                                <li role="presentation"><a href="#">Messages </a></li>
-                                <li role="presentation"><a href="#">Notifications </a></li>
-                                <li role="presentation"><a href="#">My Account</a></li>
-                                <li role="presentation"><a href="#">Logout </a></li>
+                                <li role="presentation"><a href="index.php">Timeline </a></li>
+                                <!--<li role="presentation"><a href="#">Messages </a></li>-->
+                                <li role="presentation"><a href="notify.php">Notifications </a></li>
+                                <li role="presentation"><a href="my-account.php">My Account</a></li>
+                                <li role="presentation"><a href="logout.php">Logout </a></li>
                             </ul>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav hidden-xs hidden-sm navbar-right">
                         <li class="active" role="presentation"><a href="#">Timeline</a></li>
-                        <li role="presentation"><a href="#">Messages</a></li>
-                        <li role="presentation"><a href="#">Notifications</a></li>
+                      <!--  <li role="presentation"><a href="#">Messages</a></li>-->
+                        <li role="presentation"><a href="notify.php">Notifications</a></li>
                         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">User <span class="caret"></span></a>
                             <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                <li role="presentation"><a href="#">My Profile</a></li>
+                                <li role="presentation"><a href="profile.php">My Profile</a></li>
                                 <li class="divider" role="presentation"></li>
-                                <li role="presentation"><a href="#">Timeline </a></li>
-                                <li role="presentation"><a href="#">Messages </a></li>
-                                <li role="presentation"><a href="#">Notifications </a></li>
-                                <li role="presentation"><a href="#">My Account</a></li>
-                                <li role="presentation"><a href="#">Logout </a></li>
+                                <li role="presentation"><a href="index.php">Timeline </a></li>
+                               <!-- <li role="presentation"><a href="#">Messages </a></li>--->
+                                <li role="presentation"><a href="notify.php">Notifications </a></li>
+                                <li role="presentation"><a href="my-account.php">My Account</a></li>
+                                <li role="presentation"><a href="logout.php">Logout </a></li>
                             </ul>
                         </li>
                     </ul>
@@ -174,13 +174,17 @@ if (isset($_GET['username'])) {
         <?php
         if ($userid != $followerid) {
                 if ($isFollowing) {
-                        echo '<input type="submit" name="unfollow" value="Unfollow">';
+                        echo '<div>
+        <div class="container">
+            <div class="row"><div class="col-md-3"><input class="btn btn-default" type="submit" name="unfollow" value="Unfollow" style="background-image:url(&quot;none&quot;);background-color:#da052b;color:#fff;padding:16px 32px;margin:0px 0px 6px; border:none;box-shadow:none;text-shadow:none;opacity:0.9;text-transform:uppercase;font-weight:bold;font-size:13px;letter-spacing:0.4px;line-height:1;outline:none;"></div></div></div></div>';
                 } else {
-                        echo '<input type="submit" name="follow" value="Follow">';
+                        echo '<div>
+        <div class="container">
+            <div class="row"><div class="col-md-3"><input class="btn btn-default" type="submit" name="follow" value="Follow" style="background-image:url(&quot;none&quot;);background-color:#da052b;color:#fff;padding:16px 32px;margin:0px 0px 6px;border:none;box-shadow:none;text-shadow:none;opacity:0.9;text-transform:uppercase;font-weight:bold;font-size:13px;letter-spacing:0.4px;line-height:1;outline:none;"></div></div></div></div>';
                 }
         }
         ?>
-</form></div>
+</form><br/></div>
     <div>
         <div class="container">
             <div class="row">
@@ -379,7 +383,7 @@ if (isset($_GET['username'])) {
                                                 $('.timelineposts').html(
                                                         $('.timelineposts').html() +
 
-                                                        '<li class="list-group-item" id="'+posts[index].PostId+'"><blockquote><p>'+posts[index].PostBody+'</p><img src="" data-tempsrc="'+posts[index].PostImage+'" class="postimg" id="img'+posts[index].postId+'"><footer>Posted by '+posts[index].PostedBy+' on '+posts[index].PostDate+'<button class="btn btn-default" type="button" style="color:#eb3b60;background-image:url(&quot;none&quot;);background-color:transparent;" data-id=\"'+posts[index].PostId+'\"> <i class="glyphicon glyphicon-heart" data-aos="flip-right"></i><span> '+posts[index].Likes+' Likes</span></button><button class="btn btn-default comment" data-postid=\"'+posts[index].PostId+'\" type="button" style="color:#eb3b60;background-image:url(&quot;none&quot;);background-color:transparent;"><i class="glyphicon glyphicon-flash" style="color:#f9d616;"></i><span style="color:#f9d616;"> Comments</span></button></footer></blockquote></li>'
+                                                        '<li class="list-group-item" id="'+posts[index].PostId+'"><blockquote><p>'+posts[index].PostBody+'</p><img height="400" width="280" src="" data-tempsrc="'+posts[index].PostImage+'" class="postimg" id="img'+posts[index].postId+'"><footer>Posted by '+posts[index].PostedBy+' on '+posts[index].PostDate+'<button class="btn btn-default" type="button" style="color:#eb3b60;background-image:url(&quot;none&quot;);background-color:transparent;" data-id=\"'+posts[index].PostId+'\"> <i class="glyphicon glyphicon-heart" data-aos="flip-right"></i><span> '+posts[index].Likes+' Likes</span></button><button class="btn btn-default comment" data-postid=\"'+posts[index].PostId+'\" type="button" style="color:#eb3b60;background-image:url(&quot;none&quot;);background-color:transparent;"><i class="glyphicon glyphicon-flash" style="color:#f9d616;"></i><span style="color:#f9d616;"> Comments</span></button></footer></blockquote></li>'
                                                 )
                                         }
 
