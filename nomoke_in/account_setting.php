@@ -1,7 +1,7 @@
 <?php
 include ( "inc/header.inc.php" );
 if ($user) {
-
+ 
 }
 else
 {
